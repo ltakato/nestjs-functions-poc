@@ -1,3 +1,29 @@
+# Deploy scripts
+
+callCat subscribed to playground-cats-queue
+```shell
+gcloud functions deploy call-cat \
+ --runtime=nodejs18 \
+ --entry-point=callCat \
+ --project=takatittos-playground \
+ --source=. \
+ --trigger-resource playground-cats-queue \
+ --trigger-event google.pubsub.topic.publish \
+ --allow-unauthenticated
+```
+
+greetCat subscribed to playground-cats-greet-queue
+```shell
+gcloud functions deploy greet-cat \
+ --runtime=nodejs18 \
+ --entry-point=greetCat \
+ --project=takatittos-playground \
+ --source=. \
+ --trigger-resource playground-cats-greet-queue \
+ --trigger-event google.pubsub.topic.publish \
+ --allow-unauthenticated
+```
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
