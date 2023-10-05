@@ -3,25 +3,36 @@
 callCat subscribed to playground-cats-queue
 ```shell
 gcloud functions deploy call-cat \
- --runtime=nodejs18 \
- --entry-point=callCat \
- --project=takatittos-playground \
- --source=. \
- --trigger-resource playground-cats-queue \
- --trigger-event google.pubsub.topic.publish \
- --allow-unauthenticated
+--runtime=nodejs18 \
+--entry-point=callCat \
+--project=takatittos-playground \
+--source=. \
+--trigger-resource playground-cats-queue \
+--trigger-event google.pubsub.topic.publish \
+--allow-unauthenticated
 ```
 
 greetCat subscribed to playground-cats-greet-queue
 ```shell
 gcloud functions deploy greet-cat \
- --runtime=nodejs18 \
- --entry-point=greetCat \
- --project=takatittos-playground \
- --source=. \
- --trigger-resource playground-cats-greet-queue \
- --trigger-event google.pubsub.topic.publish \
- --allow-unauthenticated
+--runtime=nodejs18 \
+--entry-point=greetCat \
+--project=takatittos-playground \
+--source=. \
+--trigger-resource playground-cats-greet-queue \
+--trigger-event google.pubsub.topic.publish \
+--allow-unauthenticated
+```
+
+taskCat triggered by http
+```shell
+gcloud functions deploy task-cat \
+--runtime=nodejs18 \
+--entry-point=taskCat \
+--project=takatittos-playground \
+--source=. \
+--trigger-http \
+--allow-unauthenticated
 ```
 
 <p align="center">

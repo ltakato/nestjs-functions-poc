@@ -11,4 +11,8 @@ export class AppService {
   greetCat(): string {
     return 'greet cat: Meow!';
   }
+
+  taskCat(): string {
+    return 'task cat: Meowwn';
+  }
 }

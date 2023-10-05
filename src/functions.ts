@@ -11,7 +11,7 @@ exports.callCat = async (message: PubsubMessage) => {
 
   const service = app.get(AppService);
 
-  console.log('logging hello: ', service.callCat());
+  console.log('[logging]: ', service.callCat());
 };
 
 exports.greetCat = async (message: PubsubMessage) => {
@@ -21,5 +21,17 @@ exports.greetCat = async (message: PubsubMessage) => {
 
   const service = app.get(AppService);
 
-  console.log('logging hello: ', service.greetCat());
+  console.log('[logging]: ', service.greetCat());
+};
+
+exports.taskCat = async (req, res) => {
+  const app = await NestFactory.createApplicationContext(AppModule);
+
+  console.log('logging incoming message: ', JSON.stringify(req.body));
+
+  const service = app.get(AppService);
+
+  console.log('[logging]: ', service.taskCat());
+
+  res.status(200).send('OK');
 };
